@@ -114,6 +114,9 @@ checkBrowsers(paths.appPath, isInteractive)
       process.exit(1);
     }
   )
+  .then(() => {
+    copyStaticFolderToWwwroot();
+  })
   .catch(err => {
     if (err && err.message) {
       console.log(err.message);
@@ -179,5 +182,12 @@ function build(previousFileSizes) {
 
       return resolve(resolveArgs);
     });
+  });
+}
+
+function copyStaticFolderToWwwroot() {
+  fs.copySync(paths.buildStatic, paths.wrootStatic, {
+    dereference: true,
+    filter: file => file !== paths.appHtml,
   });
 }

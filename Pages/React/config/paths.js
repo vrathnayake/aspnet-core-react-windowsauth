@@ -67,6 +67,8 @@ const resolveModule = (resolveFn, filePath) => {
 
 // config after eject: we're in ./config/
 module.exports = {
+  wrootStatic: resolveApp('../../wwwroot/static'),
+  buildStatic: resolveApp('build/static'),
   dotenv: resolveApp('.env'),
   appPath: resolveApp('.'),
   appBuild: resolveApp('build'),
