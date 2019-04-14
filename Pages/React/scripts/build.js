@@ -116,6 +116,7 @@ checkBrowsers(paths.appPath, isInteractive)
   )
   .then(() => {
     copyStaticFolderToWwwroot();
+    copyIndexFromBuildToPage();
   })
   .catch(err => {
     if (err && err.message) {
@@ -187,7 +188,13 @@ function build(previousFileSizes) {
 
 function copyStaticFolderToWwwroot() {
   fs.copySync(paths.buildStatic, paths.wrootStatic, {
-    dereference: true,
-    filter: file => file !== paths.appHtml,
+    dereference: true
+  });
+}
+
+function copyIndexFromBuildToPage() {
+  fs.copyFile(paths.buildIndex, paths.pageIndex, (err) => {
+    if (err) throw err;
+    console.log(`${paths.buildIndex} was copied to ${paths.pageIndex}`);
   });
 }

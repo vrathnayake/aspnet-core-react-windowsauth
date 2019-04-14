@@ -69,6 +69,8 @@ const resolveModule = (resolveFn, filePath) => {
 module.exports = {
   wrootStatic: resolveApp('../../wwwroot/static'),
   buildStatic: resolveApp('build/static'),
+  buildIndex: resolveApp('build/index.cshtml'),
+  pageIndex: resolveApp('index.cshtml'),
   dotenv: resolveApp('.env'),
   appPath: resolveApp('.'),
   appBuild: resolveApp('build'),
