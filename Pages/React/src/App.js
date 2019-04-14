@@ -4,9 +4,10 @@ import './App.css';
 
 class App extends Component {
   render() {
+    let userIdentity = localStorage.getItem('Identity.Name');
     return (
       <div className="App">
-        test
+        {userIdentity}
       </div>
     );
   }
